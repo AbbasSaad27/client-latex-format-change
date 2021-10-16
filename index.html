@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latex Format Change</title>
+  </head>
+  <body>
+    <main>
+      <label for="select-format">Select format</label>
+      <select class="select-menu" name="select-format" id="select-format">
+        <option value="abc" selected>abc</option>
+        <option value="xyz">xyz</option>
+        <option value="def">def</option>
+      </select>
+
+      <div>
+        <h1>LaTeX Format</h1>
+        <div class="show-format"></div>
+      </div>
+    </main>
+    <script>
+      // getting elements
+      var selectMenu = document.getElementsByClassName("select-menu")[0];
+      var showFormat = document.getElementsByClassName("show-format")[0];
+      // default values (initializing)
+      var selectedFormat = "abc";
+      var latexStr =
+        "\begin{array}{*{20}c} {x = \frac{{ - b \pm \sqrt {b^2 - 4ac} }}{{2a}}} & {{\rm{when}}} & {" +
+        selectedFormat[0] +
+        "x^2 + " +
+        selectedFormat[1] +
+        "x + " +
+        selectedFormat[2] +
+        " = 0} \\ \end{array}";
+      showFormat.innerText = latexStr;
+
+      // adding event listener to the selectMenu so that when it changes selected option the callback function will be called
+      selectMenu.addEventListener("change", function (e) {
+        // setting the selected value
+        selectedFormat = e.target.value;
+        // making the string again
+        latexStr =
+          "\begin{array}{*{20}c} {x = \frac{{ - b \pm \sqrt {b^2 - 4ac} }}{{2a}}} & {{\rm{when}}} & {" +
+          selectedFormat[0] +
+          "x^2 + " +
+          selectedFormat[1] +
+          "x + " +
+          selectedFormat[2] +
+          " = 0} \\ \end{array}";
+        // showing the string in dom
+        showFormat.innerText = latexStr;
+      });
+    </script>
+  </body>
+</html>
